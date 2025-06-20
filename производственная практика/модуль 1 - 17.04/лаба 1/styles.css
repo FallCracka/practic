@@ -1,0 +1,128 @@
+body {
+    background: #b39e9e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.calc {
+    background: #b39e9e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.display {
+    background: #c5bfbf;
+    color: #333;
+    font-size: 2em;
+    text-align: right;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    min-height: 1em;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.num {
+    background: #cdc7c7;
+    color: #333;
+}
+
+.op {
+    background: #ff7043;
+    color: rgb(0, 0, 0);
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+details {
+    border: 2px solid #755e5e;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    background: rgb(160, 139, 139);
+    box-shadow: 0 2px 5px rgba(177, 158, 158, 0.1);
+}
+
+summary {
+    font-weight: bold;
+    outline: none;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+summary::after {
+    content: "▼";
+    font-size: 0.8em;
+    transition: transform 0.2s;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.author-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgb(160, 139, 139);
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+
+.author-info input[type="submit"] {
+    background: #ff7043;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.author-info input[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+}

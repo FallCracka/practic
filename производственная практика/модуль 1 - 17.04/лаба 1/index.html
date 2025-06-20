@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='styles.css'>
+    <script type="text/javascript" src="script.js"></script> 
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+    <div class="container">
+        <div class="calc">
+            <div class="display" id="display">0</div>
+            <div class="buttons">
+                <button class="op" onclick="clearDisplay()">C</button>
+                <button class="op" onclick="appendToDisplay('%')">%</button>
+                <button class="op" onclick="appendToDisplay('/')">/</button>
+                <button class="op" onclick="appendToDisplay('*')">*</button>
+                <button class="num" onclick="appendToDisplay('7')">7</button>
+                <button class="num" onclick="appendToDisplay('8')">8</button>
+                <button class="num" onclick="appendToDisplay('9')">9</button>
+                <button class="op" onclick="appendToDisplay('-')">-</button>
+                <button class="num" onclick="appendToDisplay('4')">4</button>
+                <button class="num" onclick="appendToDisplay('5')">5</button>
+                <button class="num" onclick="appendToDisplay('6')">6</button>
+                <button class="op" onclick="appendToDisplay('+')">+</button>
+                <button class="num" onclick="appendToDisplay('1')">1</button>
+                <button class="num" onclick="appendToDisplay('2')">2</button>
+                <button class="num" onclick="appendToDisplay('3')">3</button>
+                <button class="op" onclick="calculate()">=</button>
+                <button class="num zero" onclick="appendToDisplay('0')">0</button>
+                <button class="num" onclick="appendToDisplay('.')">.</button>
+            </div>
+        </div> 
+    
+        <details>
+            <summary>Информация об авторе</summary>
+            <div class="author-info">
+                <h3>Об авторе</h3>
+                <p>Лабораторная работа выполнена Арушанян Лидией(миньон)</p>
+                <form action="https://github.com/FallCracka" target="_blank"></form>
+                    <input type="submit" value="Перейти на GitHub">
+                </form>
+                <p>Цель выполнения: познакомиться с <span class="warning">HTML</span> и <span class="warning">CSS</span>.</p>
+            </div>
+        </details>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        
+        function appendToDisplay(value) {
+            if (display.innerText === '0' && value !== '.') {
+                display.innerText = value;
+            } else {
+                display.innerText += value;
+            }
+        }
+        
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+        
+        function calculate() {
+            try {
+                let expression = display.innerText.replace(/%/g, '/100');
+                let result = eval(expression);
+                if (isNaN(result) || !isFinite(result)) {
+                    throw new Error('Invalid calculation');
+                }
+                display.innerText = result;
+            } catch {
+                display.innerText = 'Ошибка';
+                setTimeout(() => clearDisplay(), 1500);
+            }
+        }
+    </script>
+</body>
